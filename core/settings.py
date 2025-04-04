@@ -25,12 +25,12 @@ SECRET_KEY = 'django-insecure-m10c@k!u5b!y@=n%!9dxmc4#=q)q$)tdu$6$&w#1p_y107=2c_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'django-images-dev2.us-west-2.elasticbeanstalk.com'
-]
-
+# ALLOWED_HOSTS = [
+#     '127.0.0.1',
+#     'localhost',
+#     'mydemo-dev.us-west-2.elasticbeanstalk.com'
+# ]
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -98,12 +98,8 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'backenddemo',
-        'USER': 'mysuperuser',
-        'PASSWORD': 'mysuperuser',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
