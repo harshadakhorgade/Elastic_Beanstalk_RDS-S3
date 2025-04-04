@@ -94,6 +94,9 @@ USE_S3 = all([
 
 if USE_S3:
     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    AWS_REGION = os.environ.get("AWS_REGION", "us-west-2")  # Keep this
+    AWS_S3_REGION_NAME = os.environ.get("AWS_S3_REGION_NAME", AWS_REGION)  # Default to AWS_REGION if missing
+
     AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
