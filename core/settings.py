@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'images.apps.ImagesConfig',
     'django_tables2',
     'crispy_forms',
-    'crispy_bootstrap4',
+    # 'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -166,5 +166,5 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+# CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
