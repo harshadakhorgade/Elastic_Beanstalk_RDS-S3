@@ -5,6 +5,7 @@ crispy-bootstrap4==2024.10
 dj-database-url==2.3.0
 Django==5.0.4
 django-crispy-forms==2.3
+django-storages==1.14.6
 django-tables2==2.7.1
 gunicorn==23.0.0
 jmespath==1.0.1
