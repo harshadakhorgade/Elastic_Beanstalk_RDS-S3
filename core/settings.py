@@ -72,12 +72,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 #         }
 #     }
 # else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -113,11 +113,11 @@ AUTH_PASSWORD_VALIDATORS = [
 #     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 # else:
-#     STATIC_URL = '/static/'
-#     STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-#     MEDIA_URL = '/media/'
-#     MEDIA_ROOT = BASE_DIR / 'mediafiles'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
