@@ -7,6 +7,14 @@ print("RDS_DB_NAME:", os.environ.get('RDS_DB_NAME'))
 
 from pathlib import Path
 
+
+
+
+# Log RDS env vars to EB logs
+logging.warning(f"📦 RDS_DB_NAME: {os.environ.get('RDS_DB_NAME')}")
+logging.warning(f"📦 RDS_USERNAME: {os.environ.get('RDS_USERNAME')}")
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get(
