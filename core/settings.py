@@ -1,4 +1,5 @@
 import os
+import logging
 print("DEBUG ENV:", os.environ)
 
 print("RDS_DB_NAME:", os.environ.get('RDS_DB_NAME'))
@@ -86,6 +87,22 @@ else:
     }
 
 print("Using DB:", DATABASES['default'])
+
+
+
+
+
+if os.environ.get('RDS_DB_NAME'):
+    print("✅ Using RDS PostgreSQL DB")
+else:
+    print("⚠️ Using SQLite DB")
+
+# Optional: log DB engine to Django log
+logger = logging.getLogger(__name__)
+logger.info("Database Engine: %s", DATABASES['default']['ENGINE'])
+
+
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
