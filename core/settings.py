@@ -26,6 +26,10 @@ SECRET_KEY = os.environ.get(
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "False").lower() in ("true", "1", "yes")
 
+
+
+
+
 ALLOWED_HOSTS = ['mydemo-dev.us-west-2.elasticbeanstalk.com']
 
 INSTALLED_APPS = [
