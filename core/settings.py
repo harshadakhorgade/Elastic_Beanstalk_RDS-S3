@@ -121,36 +121,43 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # S3 configuration
-# USE_S3 = all([
-#     os.environ.get('AWS_ACCESS_KEY_ID'),
-#     os.environ.get('AWS_SECRET_ACCESS_KEY'),
-#     os.environ.get('AWS_STORAGE_BUCKET_NAME'),
-#     os.environ.get('AWS_S3_REGION_NAME'),
-# ])
+# S3 configuration
+USE_S3 = all([
+    os.environ.get('AWS_ACCESS_KEY_ID'),
+    os.environ.get('AWS_SECRET_ACCESS_KEY'),
+    os.environ.get('AWS_STORAGE_BUCKET_NAME'),
+])
 
-# if USE_S3:
-#     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-#     AWS_REGION = os.environ.get("AWS_REGION", "us-west-2")  # Keep this
-#     AWS_S3_REGION_NAME = os.environ.get("AWS_S3_REGION_NAME", AWS_REGION)  # Default to AWS_REGION if missing
-
-#     AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
-#     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-#     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+if USE_S3:
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
     
-#     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
-#     AWS_LOCATION = 'media'
+    # Use AWS_REGION if S3 region is not explicitly defined
+    AWS_REGION = os.environ.get('AWS_REGION', 'us-west-2')
+    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', AWS_REGION)
+    
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+    AWS_LOCATION = 'media'
 
-#     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+    # Static files (CSS, JS)
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 
-#     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-# else:
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+    # Media files (user uploads)
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+else:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'mediafiles'
+
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
